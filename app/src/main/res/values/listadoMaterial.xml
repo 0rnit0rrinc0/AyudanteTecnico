@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="listadoMaterialMenor" >
+        <item>Amarras Plasticas (150 mm)</item>
+        <item>Atenuador RF (20 db)</item>
+        <item>Cable Drop F.O. Acometida Plana con mensajero</item>
+        <item>Cable Pin telefonico Interior (2x24)</item>
+        <item>Cable plano (Preconectorizado)</item>
+        <item>Cable RCA</item>
+        <item>Cable RG6 S/P (Blanco 60% Commscope)</item>
+        <item>Cancamo Metalico (8 mm)</item>
+        <item>Conector de Campo SC/APC</item>
+        <item>Conector RG6-Belden</item>
+        <item>Conector RJ45 CAT6</item>
+        <item>Ficha identificación amarilla</item>
+        <item>Grampa DROP Negra</item>
+        <item>Grampa Negra Cable F.O. DROP (5 mm) </item>
+        <item>Grampa RG6 (Blanca)</item>
+        <item>Pasa cable (Blanco)</item>
+        <item>Pasa cable (Negro)</item>
+    </string-array>
+</resources>

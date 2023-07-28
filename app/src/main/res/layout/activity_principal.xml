@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".principalActivity">
+
+    <Button
+        android:id="@+id/agregarInventario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginBottom="9dp"
+        android:text="Agregar a Inventario"
+        app:layout_constraintBottom_toTopOf="@+id/descontarInventario"
+        app:layout_constraintStart_toStartOf="@+id/descontarInventario" />
+
+    <Button
+        android:id="@+id/descontarInventario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginBottom="39dp"
+        android:text="Descontar de Inventario"
+        app:layout_constraintBottom_toTopOf="@+id/btnInventario"
+        app:layout_constraintStart_toStartOf="@+id/btnInventario" />
+
+    <Button
+        android:id="@+id/btnInventario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="57dp"
+        android:layout_marginBottom="326dp"
+        android:text="Inventario"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
