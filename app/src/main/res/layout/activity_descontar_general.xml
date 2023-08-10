@@ -10,15 +10,19 @@
         android:id="@+id/btnDescontarEquipos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginBottom="82dp"
         android:text="Equipos"
-        tools:layout_editor_absoluteX="156dp"
-        tools:layout_editor_absoluteY="169dp" />
+        app:layout_constraintBottom_toTopOf="@+id/btnDescontarMaterial"
+        app:layout_constraintStart_toStartOf="@+id/btnDescontarMaterial" />
 
     <Button
         android:id="@+id/btnDescontarMaterial"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="299dp"
         android:text="Material menor"
-        tools:layout_editor_absoluteX="121dp"
-        tools:layout_editor_absoluteY="299dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

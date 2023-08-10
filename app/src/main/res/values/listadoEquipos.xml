@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="listadoTiposEquipos">
-        <item>Equipo de prueba</item>
+        <item>Decodificador (16) STB ISDBT 168H1</item>
+        <item>Decodificador STB 2000</item>
+        <item>Decodificador STB ISDBT 168H1</item>
+        <item>ONT 6144F</item>
+        <item>ONT 6145F</item>
     </string-array>
 </resources>

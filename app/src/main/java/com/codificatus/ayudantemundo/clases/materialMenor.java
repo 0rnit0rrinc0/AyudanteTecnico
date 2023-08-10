@@ -2,26 +2,15 @@ package com.codificatus.ayudantemundo.clases;
 
 public class materialMenor {
 
-    private Integer id;
     private String nombre;
-    private Integer cantidad;
+    private int cantidad;
 
-    /*
-    public materialMenor(Integer id, String nombre, Integer cantidad) {
-        this.id = id;
+    public materialMenor(String nombre, int cantidad) {
         this.nombre = nombre;
         this.cantidad = cantidad;
     }
 
-     */
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getNombre() {
         return nombre;

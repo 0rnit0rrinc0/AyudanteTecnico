@@ -6,75 +6,128 @@
     android:layout_height="match_parent"
     tools:context=".agregar.agregarEquiposActivity">
 
+    <Spinner
+        android:id="@+id/spinnerTipoEquipos"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="70dp"
+        android:backgroundTintMode="multiply"
+        app:layout_constraintBottom_toTopOf="@+id/btnAgregarEquipos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/btnEscanear" />
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginEnd="43dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="76dp"
         android:text="Tipo"
-        app:layout_constraintBottom_toBottomOf="@+id/spinnerTipoEquipos"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnDescoEq"
         app:layout_constraintEnd_toStartOf="@+id/spinnerTipoEquipos"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/btnDescoEq"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginBottom="298dp"
+        android:background="#03A9F4"
+        android:backgroundTint="#03A9F4"
+        android:text="Descontar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnAgregarEquipos"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editCodigo" />
 
     <EditText
         android:id="@+id/editCodigo"
-        android:layout_width="0dp"
+        android:layout_width="246dp"
         android:layout_height="0dp"
-        android:layout_marginTop="107dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="54dp"
+        android:layout_marginBottom="161dp"
         android:ems="10"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerTipoEquipos"
-        app:layout_constraintEnd_toStartOf="@+id/btnEscanear"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/btnDescoEq"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="51dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="27dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="253dp"
+        android:layout_marginBottom="58dp"
         android:text="Codigo"
-        app:layout_constraintEnd_toStartOf="@+id/editCodigo"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toStartOf="@+id/btnEscanear"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editCodigo" />
-
-    <Spinner
-        android:id="@+id/spinnerTipoEquipos"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="37dp"
-        android:layout_marginBottom="90dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnAgregarEquipos"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/editCodigo" />
-
-    <ImageButton
-        android:id="@+id/btnEscanear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="101dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="53dp"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerTipoEquipos"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editCodigo"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_camera" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
         android:id="@+id/btnAgregarEquipos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="34dp"
-        android:layout_marginBottom="364dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="299dp"
+        android:background="#03A9F4"
+        android:backgroundTint="#03A9F4"
         android:text="Agregar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/spinnerTipoEquipos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnDescoEq"
         app:layout_constraintTop_toBottomOf="@+id/spinnerTipoEquipos" />
+
+    <ImageButton
+        android:id="@+id/btnEscanear"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="173dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="44dp"
+        android:backgroundTint="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerTipoEquipos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/lectura_de_codigo_de_barras" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="65dp"
+        android:layout_marginBottom="59dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/l" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="129dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="12dp"
+        android:text="Equipos seriados"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/editCodigo"
+        app:layout_constraintEnd_toEndOf="@+id/editCodigo"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

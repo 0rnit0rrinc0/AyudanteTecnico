@@ -15,9 +15,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.codificatus.ayudantemundo.R;
 import com.codificatus.ayudantemundo.db.DbEquipos;
+import com.codificatus.ayudantemundo.descontar.descontarEquiposActivity;
 import com.codificatus.ayudantemundo.escaner.CaptureAct;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
@@ -28,6 +30,7 @@ public class agregarEquiposActivity extends AppCompatActivity {
     EditText editCodigo;
     ImageButton btnScan;
     Spinner spinnerTipoEquipos;
+    Button btnDesEq;
 
 
     @Override
@@ -49,11 +52,50 @@ public class agregarEquiposActivity extends AppCompatActivity {
         btnAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 String seleccion = spinnerTipoEquipos.getSelectedItem().toString();
+                String codigoBarras = editCodigo.getText().toString().trim();
 
-                DbEquipos dbEquipos = new DbEquipos(agregarEquiposActivity.this);
-                dbEquipos.insertarEquipos(editCodigo.getText().toString(), seleccion.toString());
+                if (!codigoBarras.isEmpty()) {
+                    DbEquipos dbEquipos = new DbEquipos(agregarEquiposActivity.this);
+                    long insertedRowId = dbEquipos.insertarEquipos(codigoBarras, seleccion);
+
+                    if (insertedRowId != -1) {
+                        // La inserción fue exitosa
+                        Toast.makeText(agregarEquiposActivity.this, "Equipo agregado exitosamente", Toast.LENGTH_SHORT).show();
+                        editCodigo.setText(""); // Limpiar el campo de texto
+                    } else {
+                        // No se pudo insertar el equipo
+                        Toast.makeText(agregarEquiposActivity.this, "No se pudo agregar el equipo", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    // El código de barras está vacío
+                    Toast.makeText(agregarEquiposActivity.this, "Por favor, ingrese un código de barras", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        btnDesEq = (Button) findViewById(R.id.btnDescoEq);
+        btnDesEq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String codigoBarras = editCodigo.getText().toString().trim();
+
+                if (!codigoBarras.isEmpty()) {
+                    DbEquipos dbEquipos = new DbEquipos(agregarEquiposActivity.this);
+                    boolean eliminado = dbEquipos.eliminar(codigoBarras);
+
+                    if (eliminado) {
+                        // La eliminación fue exitosa
+                        Toast.makeText(agregarEquiposActivity.this, "Equipo eliminado exitosamente", Toast.LENGTH_SHORT).show();
+                        editCodigo.setText(""); // Limpiar el campo de texto
+                    } else {
+                        // No se pudo eliminar el equipo
+                        Toast.makeText(agregarEquiposActivity.this, "No se pudo eliminar el equipo", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    // El código de barras está vacío
+                    Toast.makeText(agregarEquiposActivity.this, "Por favor, ingrese un código de barras", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

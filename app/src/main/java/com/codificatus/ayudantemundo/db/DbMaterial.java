@@ -1,5 +1,6 @@
 package com.codificatus.ayudantemundo.db;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -10,8 +11,9 @@ import androidx.annotation.Nullable;
 import com.codificatus.ayudantemundo.clases.materialMenor;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class DbMaterial extends DbHelper{
+public class DbMaterial extends DbHelper {
 
     Context context;
 
@@ -20,46 +22,79 @@ public class DbMaterial extends DbHelper{
         this.context = context;
     }
 
-    public long insertarMaterial (String nombre, Integer cantidad){
-        long id = 0;
-        try {
-            DbHelper dbHelper = new DbHelper(context);
-            SQLiteDatabase db = dbHelper.getWritableDatabase();
+    public int buscarCantidadPorNombre(String nombre) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        int cantidad = -1; // Valor por defecto en caso de no encontrar el elemento
 
-            ContentValues values = new ContentValues();
-            values.put("nombre", nombre);
-            values.put("cantidad", cantidad);
-        }catch (Exception ex){
-            ex.toString();
-        }
-        return id;
-    }
+        String[] projection = {COLUMN_CANTIDAD};
+        String selection = COLUMN_NOMBRE + " = ?";
+        String[] selectionArgs = {nombre};
 
-    public ArrayList<materialMenor> mostrarMaterial(){
+        Cursor cursor = db.query(
+                TABLE_MATERIALM,
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
 
-        DbHelper dbHelper = new DbHelper(context);
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-
-        ArrayList<materialMenor> listaMaterial = new ArrayList<>();
-
-        materialMenor material = null;
-        Cursor cursorMaterial = null;
-
-        cursorMaterial = db.rawQuery("SELECT * FROM " + TABLE_MATERIALM, null);
-
-        if (cursorMaterial.moveToFirst()){
-            do {
-                material = new materialMenor();
-                material.setId(cursorMaterial.getInt(0));
-                material.setNombre(cursorMaterial.getString(1));
-                material.setCantidad(cursorMaterial.getInt(2));
-
-                listaMaterial.add(material);
-            }while (cursorMaterial.moveToNext());
+        if (cursor.moveToFirst()) {
+            cantidad = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_CANTIDAD));
         }
 
-        cursorMaterial.close();
-        return listaMaterial;
-
+        cursor.close();
+        return cantidad;
     }
+
+    public void actualizarCantidadPorNombre(String nombre, int nuevaCantidad) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_CANTIDAD, nuevaCantidad);
+
+        String whereClause = COLUMN_NOMBRE + " = ?";
+        String[] whereArgs = {nombre};
+
+        db.update(TABLE_MATERIALM, values, whereClause, whereArgs);
+    }
+
+    public List<materialMenor> obtenerTodosLosMateriales() {
+        List<materialMenor> listaMateriales = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String[] projection = {COLUMN_NOMBRE, COLUMN_CANTIDAD};
+        Cursor cursor = db.query(
+                TABLE_MATERIALM,
+                projection,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+
+        while (cursor.moveToNext()) {
+            String nombre = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NOMBRE));
+            int cantidad = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_CANTIDAD));
+            materialMenor material = new materialMenor(nombre, cantidad);
+            listaMateriales.add(material);
+        }
+
+        cursor.close();
+        return listaMateriales;
+    }
+
+    // ... (otros métodos y código)
+
 }
+
+
+
+
+
+
+
+
+

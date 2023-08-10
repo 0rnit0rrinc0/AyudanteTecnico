@@ -32,8 +32,6 @@ public class descontarGeneralActivity extends AppCompatActivity {
         btnDescMaterial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(descontarGeneralActivity.this, descontarMaterialActivity.class);
-                startActivity(i);
             }
         });
 
