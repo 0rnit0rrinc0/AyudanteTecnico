@@ -10,7 +10,7 @@
         android:id="@+id/spinnerTipoEquipos"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="23dp"
+        android:layout_marginEnd="22dp"
         android:layout_marginBottom="70dp"
         android:backgroundTintMode="multiply"
         app:layout_constraintBottom_toTopOf="@+id/btnAgregarEquipos"
@@ -46,18 +46,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnAgregarEquipos"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editCodigo" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <EditText
         android:id="@+id/editCodigo"
-        android:layout_width="246dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="161dp"
+        android:layout_width="251dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="507dp"
         android:ems="10"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/btnDescoEq"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnEscanear"
+        app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <TextView
@@ -65,15 +65,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="253dp"
+        android:layout_marginTop="196dp"
+        android:layout_marginEnd="11dp"
         android:layout_marginBottom="58dp"
         android:text="Codigo"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintEnd_toStartOf="@+id/btnEscanear"
+        app:layout_constraintEnd_toStartOf="@+id/editCodigo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnAgregarEquipos"
@@ -91,43 +92,40 @@
 
     <ImageButton
         android:id="@+id/btnEscanear"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="173dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="44dp"
+        android:layout_width="81dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="174dp"
+        android:layout_marginBottom="50dp"
         android:backgroundTint="#00FFFFFF"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@+id/spinnerTipoEquipos"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintStart_toEndOf="@+id/editCodigo"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/lectura_de_codigo_de_barras" />
+        app:srcCompat="@android:drawable/ic_menu_camera" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="0dp"
+        android:layout_width="281dp"
         android:layout_height="0dp"
-        android:layout_marginStart="65dp"
-        android:layout_marginTop="33dp"
-        android:layout_marginEnd="65dp"
-        android:layout_marginBottom="59dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="9dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView13"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/l" />
+        app:srcCompat="@drawable/logo" />
 
     <TextView
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="129dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="13dp"
         android:text="Equipos seriados"
         android:textSize="24sp"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toTopOf="@+id/editCodigo"
         app:layout_constraintEnd_toEndOf="@+id/editCodigo"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,17 +8,26 @@
     tools:context=".principalActivity">
 
     <Button
-        android:id="@+id/btnInventario"
+        android:id="@+id/btnReportes"
         android:layout_width="175dp"
         android:layout_height="48dp"
-        android:layout_marginTop="224dp"
-        android:layout_marginBottom="224dp"
+        android:layout_marginStart="220dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#03A9F4"
+        android:text="Reportes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnPrinFerreteria" />
+
+    <Button
+        android:id="@+id/btnInventario"
+        android:layout_width="175dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
         android:backgroundTint="#03A9F4"
         android:text="Inventario"
-        app:layout_constraintBottom_toBottomOf="@+id/imgSalir"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/btnReportes"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toTopOf="@+id/btnReportes" />
 
     <Button
         android:id="@+id/btnPrinFerreteria"
@@ -42,34 +51,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:srcCompat="@drawable/bienvenido" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:srcCompat="@drawable/_qu__deseas_hacer_hoy" />
-
     <ImageButton
         android:id="@+id/imgSalir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:backgroundTint="#00FFFFFF"
-        android:src="@drawable/grupo_2"
+        android:src="@drawable/salir"
         app:layout_constraintBottom_toTopOf="@+id/textView5"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -79,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="14dp"
         android:backgroundTint="#00FFFFFF"
-        android:src="@drawable/grupo_1"
+        android:src="@drawable/enviar"
         app:layout_constraintBottom_toTopOf="@+id/textView7"
         app:layout_constraintEnd_toEndOf="@+id/textView7" />
 
@@ -99,7 +87,7 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="14dp"
         android:text="Comentarios"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -111,7 +99,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="31dp"
-        android:text="Version 1.0"
+        android:text="Version 3.0"
         app:layout_constraintBottom_toTopOf="@+id/textView10"
         app:layout_constraintStart_toStartOf="@+id/textView10" />
 
@@ -127,12 +115,12 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="199dp"
-        android:layout_height="133dp"
+        android:layout_width="219dp"
+        android:layout_height="231dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/l" />
+        app:srcCompat="@drawable/logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

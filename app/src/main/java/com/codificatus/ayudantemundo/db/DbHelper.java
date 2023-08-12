@@ -15,13 +15,22 @@ public class DbHelper extends SQLiteOpenHelper {
     public static final String TABLE_MATERIALM = "t_materialMenor";
     public static final String COLUMN_NOMBRE = "nombre";
     public static final String COLUMN_CANTIDAD = "cantidad";
+    public static final String TABLE_REPORTES = "reportes";
+
+    public static final String COLUMN_ID = "id";
+    public static final String COLUMN_CODIGO_BARRAS = "codigo_barras";
+    public static final String COLUMN_TIPO_EQUIPO = "tipo_equipo";
+    public static final String COLUMN_FECHA_HORA = "fecha_hora";
+    public static final String COLUMN_LATITUD = "latitud";
+    public static final String COLUMN_LONGITUD = "longitud";
 
 
-
-
-    public DbHelper(@Nullable Context context) {
+    public DbHelper(Context context) {
         super(context, DATABASE_NOMBRE, null, DATABASE_VERSION);
     }
+
+
+
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
@@ -34,16 +43,24 @@ public class DbHelper extends SQLiteOpenHelper {
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 COLUMN_NOMBRE + " TEXT NOT NULL," +
                 COLUMN_CANTIDAD + " INTEGER NOT NULL)");
+
+        sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_REPORTES + " (" +
+                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COLUMN_CODIGO_BARRAS + " TEXT NOT NULL, " +
+                COLUMN_TIPO_EQUIPO + " TEXT NOT NULL, " +
+                COLUMN_FECHA_HORA + " DATETIME NOT NULL, " +
+                COLUMN_LATITUD + " REAL, " +
+                COLUMN_LONGITUD + " REAL)");
         insertarDatosIniciales(sqLiteDatabase);
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_MATERIALM + TABLE_EQUIPOS);
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_MATERIALM);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_EQUIPOS);
         onCreate(sqLiteDatabase);
-
     }
+
 
     private void insertarDatosIniciales(SQLiteDatabase db) {
         String[] nombresMateriales = {

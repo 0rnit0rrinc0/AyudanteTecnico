@@ -68,4 +68,6 @@ public class equiposAdapter extends ArrayAdapter<equipos> {
     public void setMenuItemClickListener(MenuItemClickListener listener) {
         this.clickListener = listener;
     }
+
+
 }

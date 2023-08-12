@@ -1,8 +1,12 @@
 package com.codificatus.ayudantemundo;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,16 +21,19 @@ import com.codificatus.ayudantemundo.agregar.agregarPrincipalActivity;
 import com.codificatus.ayudantemundo.db.DbHelper;
 import com.codificatus.ayudantemundo.descontar.descontarGeneralActivity;
 import com.codificatus.ayudantemundo.inventario.inventarioActivity;
+import com.codificatus.ayudantemundo.reportes.reportesActivity;
 
 import java.net.URI;
 
 public class principalActivity extends AppCompatActivity {
-
+    private static final int REQUEST_LOCATION_PERMISSION = 1;
     Button btnEqui;
     Button btnFerre;
     Button btnInventario;
     ImageButton btnSalir;
     ImageButton btnComentarios;
+
+    Button btnReportes;
 
     String urlTelegram = "https://t.me/CodificatusMorapps";
 
@@ -35,6 +42,8 @@ public class principalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
+
+        checkLocationPermission();
 
         btnEqui = (Button)findViewById(R.id.btnPrinEquipos);
 
@@ -99,8 +108,32 @@ public class principalActivity extends AppCompatActivity {
             }
         });
 
+        btnReportes = (Button) findViewById(R.id.btnReportes);
+
+        btnReportes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(principalActivity.this, reportesActivity.class);
+                startActivity(i);
+            }
+        });
 
 
 
+
+
+
+    }
+    private void checkLocationPermission() {
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            // Si el permiso no está concedido, solicítalo
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    REQUEST_LOCATION_PERMISSION);
+        } else {
+            // El permiso ya está concedido, puedes continuar con la obtención de la ubicación
+            // o cualquier otra operación relacionada con la ubicación
+        }
     }
 }

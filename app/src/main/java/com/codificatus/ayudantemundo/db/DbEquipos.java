@@ -99,6 +99,22 @@ public class DbEquipos extends DbHelper{
         return equiposList;
     }
 
+    public equipos obtenerEquipoPorCodigo(String codigoBarras) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        equipos equipo = null;
+
+        Cursor cursor = db.query(TABLE_EQUIPOS, null, "codigoBarras = ?", new String[]{codigoBarras}, null, null, null);
+
+        if (cursor != null && cursor.moveToFirst()) {
+            String tipo = cursor.getString(cursor.getColumnIndex("tipo"));
+            equipo = new equipos(codigoBarras, tipo);
+            cursor.close();
+        }
+
+        db.close();
+
+        return equipo;
+    }
 
 
 

@@ -3,11 +3,17 @@ package com.codificatus.ayudantemundo.descontar;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,10 +23,15 @@ import android.widget.Toast;
 
 import com.codificatus.ayudantemundo.R;
 import com.codificatus.ayudantemundo.agregar.agregarEquiposActivity;
+import com.codificatus.ayudantemundo.clases.Reporte;
+import com.codificatus.ayudantemundo.clases.equipos;
 import com.codificatus.ayudantemundo.db.DbEquipos;
+import com.codificatus.ayudantemundo.db.DbReporte;
 import com.codificatus.ayudantemundo.escaner.CaptureAct;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
+
+import java.util.Date;
 
 public class descontarEquiposActivity extends AppCompatActivity {
 
@@ -44,7 +55,17 @@ public class descontarEquiposActivity extends AppCompatActivity {
 
                 if (!codigoBarras.isEmpty()) {
                     DbEquipos dbEquipos = new DbEquipos(descontarEquiposActivity.this);
+                    equipos equipoEliminado = dbEquipos.obtenerEquipoPorCodigo(codigoBarras);
+
                     boolean eliminado = dbEquipos.eliminar(codigoBarras);
+                    if (ContextCompat.checkSelfPermission(descontarEquiposActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)
+                            == PackageManager.PERMISSION_GRANTED) {
+                        double latitud = obtenerLatitudActual(); // Reemplaza con el método correcto
+                        double longitud = obtenerLongitudActual(); // Reemplaza con el método correcto
+                        guardarReporte(codigoBarras, equipoEliminado.getTipo(), latitud, longitud);
+                    } else {
+                        Toast.makeText(descontarEquiposActivity.this, "Los permisos de ubicación no están concedidos.", Toast.LENGTH_SHORT).show();
+                    }
 
                     if (eliminado) {
                         // La eliminación fue exitosa
@@ -60,6 +81,7 @@ public class descontarEquiposActivity extends AppCompatActivity {
                 }
             }
         });
+
 
         btnScanDesc.setOnClickListener(view -> {
             scanCode();
@@ -79,17 +101,79 @@ public class descontarEquiposActivity extends AppCompatActivity {
 
     ActivityResultLauncher<ScanOptions> barLauncher = registerForActivityResult(new ScanContract(), result -> {
         if (result.getContents() != null){
-            AlertDialog.Builder builder = new AlertDialog.Builder(descontarEquiposActivity.this);
-            builder.setTitle("Codigo: ");
-            builder.setMessage(result.getContents());
-            builder.setPositiveButton("Copiar", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                    ClipData clip = ClipData.newPlainText("EditText", result.getContents().toString());
-                    clipboard.setPrimaryClip(clip);
-                }
-            }).show();
+            String codigoBarras = result.getContents().toString();
+            eliminarEquipo(codigoBarras);
         }
     });
+
+    private void eliminarEquipo(String codigoBarras) {
+        if (!codigoBarras.isEmpty()) {
+            DbEquipos dbEquipos = new DbEquipos(descontarEquiposActivity.this);
+            equipos equipoEliminado = dbEquipos.obtenerEquipoPorCodigo(codigoBarras);
+            boolean eliminado = dbEquipos.eliminar(codigoBarras);
+            if (eliminado) {
+                // La eliminación fue exitosa
+                Toast.makeText(descontarEquiposActivity.this, "Equipo eliminado exitosamente", Toast.LENGTH_SHORT).show();
+
+                // Obtén la latitud y longitud actuales
+                double latitud = obtenerLatitudActual();
+                double longitud = obtenerLongitudActual();
+
+                // Crea un nuevo objeto Reporte y almacénalo en la base de datos de reportes
+                guardarReporte(codigoBarras, equipoEliminado.getTipo(), latitud, longitud);
+            } else {
+                // No se pudo eliminar el equipo
+                Toast.makeText(descontarEquiposActivity.this, "No se pudo eliminar el equipo", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            // El código de barras está vacío
+            Toast.makeText(descontarEquiposActivity.this, "Por favor, ingrese un código de barras", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void guardarReporte(String codigoBarras, String tipoEquipo, double latitud, double longitud) {
+        DbReporte dbReporte = new DbReporte(descontarEquiposActivity.this);
+
+        // Crea un nuevo objeto Reporte con los detalles necesarios
+        Reporte nuevoReporte = new Reporte(codigoBarras, tipoEquipo, new Date(), latitud, longitud);
+
+        // Inserta el nuevo reporte en la base de datos de reportes
+        long idReporte = dbReporte.insertarReporte(nuevoReporte);
+
+        if (idReporte != -1) {
+            // El reporte se insertó exitosamente
+            Toast.makeText(descontarEquiposActivity.this, "Eliminado exitosamente. Reporte de eliminación registrado exitosamente", Toast.LENGTH_SHORT).show();
+        } else {
+            // No se pudo insertar el reporte
+            Toast.makeText(descontarEquiposActivity.this, "No se pudo registrar el reporte de eliminación", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+
+    private double obtenerLongitudActual() {
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            if (location != null) {
+                return location.getLongitude();
+            }
+        }
+        return 0.0; // Valor predeterminado si no se puede obtener la ubicación
+    }
+
+    private double obtenerLatitudActual() {
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            if (location != null) {
+                return location.getLatitude();
+            }
+        }
+        return 0.0; // Valor predeterminado si no se puede obtener la ubicación
+    }
+
+
 }

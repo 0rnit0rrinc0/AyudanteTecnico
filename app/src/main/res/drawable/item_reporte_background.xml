@@ -1,0 +1,17 @@
+<!-- item_reporte_background.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Fondo -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF" /> <!-- Color de fondo blanco -->
+            <corners android:radius="8dp" /> <!-- Radio de las esquinas (borde redondeado) -->
+        </shape>
+    </item>
+    <!-- Sombra -->
+    <item android:right="1dp" android:left="1dp" android:top="1dp" android:bottom="1dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#20000000" /> <!-- Color de sombra semitransparente -->
+            <corners android:radius="8dp" /> <!-- Radio de las esquinas (borde redondeado) -->
+        </shape>
+    </item>
+</layer-list>
