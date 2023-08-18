@@ -18,6 +18,12 @@
         android:theme="@style/Theme.AyudanteMundo"
         tools:targetApi="31">
         <activity
+            android:name=".respaldodb.funcRespaldoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".respaldodb.respaldoDbActivity"
+            android:exported="false" />
+        <activity
             android:name=".reportes.reportesActivity"
             android:exported="false" />
 

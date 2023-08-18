@@ -4,68 +4,83 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:context=".descontar.descontarEquiposActivity">
-
-    <EditText
-        android:id="@+id/editCodigoDescontarEquipo"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="110dp"
-        android:ems="10"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/btnDescEquipos"
-        app:layout_constraintEnd_toStartOf="@+id/btnEscanearDescontar"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="132dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="7dp"
-        android:text="Codigo de barras"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/editCodigoDescontarEquipo"
-        app:layout_constraintEnd_toStartOf="@+id/editCodigoDescontarEquipo"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="137dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="86dp"
-        app:layout_constraintBottom_toTopOf="@+id/editCodigoDescontarEquipo"
+        android:layout_width="151dp"
+        android:layout_height="138dp"
+        android:layout_marginStart="146dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="98dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView15"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
 
-    <Button
-        android:id="@+id/btnDescEquipos"
-        android:layout_width="147dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="335dp"
-        android:text="Descontar"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginBottom="97dp"
+        android:text="Descontar Equipos seriados"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/editCodigoDescontarEquipo"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="97dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="105dp"
+        android:layout_marginEnd="4dp"
+        android:text="Codigo de barras"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/editCodigoDescontarEquipo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editCodigoDescontarEquipo" />
+        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+    <EditText
+        android:id="@+id/editCodigoDescontarEquipo"
+        android:layout_width="211dp"
+        android:layout_height="62dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="56dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/btnDescEquipos"
+        app:layout_constraintEnd_toStartOf="@+id/btnEscanearDescontar" />
 
     <ImageButton
         android:id="@+id/btnEscanearDescontar"
-        android:layout_width="67dp"
-        android:layout_height="49dp"
-        android:layout_marginEnd="7dp"
+        android:layout_width="56dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="102dp"
+        android:layout_marginEnd="13dp"
         android:backgroundTint="#00FFFFFF"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="@+id/editCodigoDescontarEquipo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editCodigoDescontarEquipo"
-        app:layout_constraintTop_toTopOf="@+id/editCodigoDescontarEquipo"
+        app:layout_constraintTop_toBottomOf="@+id/textView15"
         app:srcCompat="@android:drawable/ic_menu_camera" />
+
+    <Button
+        android:id="@+id/btnDescEquipos"
+        android:layout_width="330dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="232dp"
+        android:text="Descontar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

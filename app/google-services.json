@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "491008118130",
+    "project_id": "ayudante-tecnico-395617",
+    "storage_bucket": "ayudante-tecnico-395617.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:491008118130:android:ff44e8f023b2df7ff7e1eb",
+        "android_client_info": {
+          "package_name": "com.codificatus.ayudanteTecnico"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "491008118130-cmmi7em3n7tud9od7rfi5papv54pu81j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.codificatus.ayudanteTecnico",
+            "certificate_hash": "ea8dec81559f7314e0cf02c504ffff703615bd34"
+          }
+        },
+        {
+          "client_id": "491008118130-qafg9bf6674n9ojeqoqq6la1gq25m2cd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxH_-tIGLAhHkSrTmOITCiXVeb6I9KLG8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "491008118130-qafg9bf6674n9ojeqoqq6la1gq25m2cd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

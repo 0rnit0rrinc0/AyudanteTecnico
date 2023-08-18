@@ -8,11 +8,12 @@
 
     <TextView
         android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="114dp"
+        android:layout_height="46dp"
         android:layout_marginStart="1dp"
         android:layout_marginEnd="11dp"
         android:text="Tipo de material"
+        android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/spinnerTipoMaterial"
@@ -21,7 +22,7 @@
 
     <EditText
         android:id="@+id/editCantidad"
-        android:layout_width="314dp"
+        android:layout_width="298dp"
         android:layout_height="50dp"
         android:layout_marginEnd="7dp"
         android:ems="10"
@@ -43,8 +44,8 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="88dp"
+        android:layout_height="29dp"
         android:layout_marginStart="1dp"
         android:layout_marginEnd="6dp"
         android:layout_marginBottom="36dp"
@@ -81,8 +82,8 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="274dp"
+        android:layout_height="118dp"
         android:layout_marginStart="54dp"
         android:layout_marginEnd="54dp"
         android:layout_marginBottom="46dp"

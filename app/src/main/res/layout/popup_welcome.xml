@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="¡Bienvenido a Ayudante Técnico!"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gracias por usar mi aplicación. La app se encuentra en vías de desarrollo por lo que es posible que se pudiesen generar algunos errores (Espero que no suceda :( )."
+        android:textAlignment="center"
+        android:layout_marginBottom="16dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Si posees alguna duda sobre como usar la aplicación puedes presionar el boton de comentarios que se encuentra en la ventana principal y con mucho gusto te ayudare. ¡Espero implementar muchas mejoras prontamente!         ¡Que la disfrutes!"
+        android:textAlignment="center"
+        android:layout_marginBottom="16dp"/>
+
+    <EditText
+        android:id="@+id/etName"
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ingresa tu nombre"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Continuar"
+        android:layout_gravity="center"
+        android:id="@+id/btnContinue"/>
+</LinearLayout>
